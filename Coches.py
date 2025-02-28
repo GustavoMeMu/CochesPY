@@ -1,51 +1,64 @@
-""" Crea una clase Coche con los siguientes atributos y métodos:
-
-Atributos:
-
-marca
-modelo
-combustible (litros, comienza en 100)
-Métodos:
-
-conducir(km): Reduce 1 litro de combustible cada 10 km.
-repostar(litros): Aumenta el combustible hasta un máximo de 100 litros.
-estado(): Muestra la cantidad de combustible restante.
- """
- # Definimos las constantes
+# Definimos las constantes
 COMBUSTIBLE = 100
 KM_POR_LITRO = 10
 
 # Definimos la clase Coche
 class Coche:
     def __init__(self, marca='', modelo=''):
-        self.marca = marca
-        self.modelo = modelo
-        self.combustible = COMBUSTIBLE
+        self.__marca = marca  # Atributo privado
+        self.__modelo = modelo  # Atributo privado
+        self.__combustible = COMBUSTIBLE  # Atributo privado
+    
+    # Métodos getter y setter para marca
+    def get_marca(self):
+        return self.__marca
+    
+    def set_marca(self, marca):
+        self.__marca = marca
+    
+    # Métodos getter y setter para modelo
+    def get_modelo(self):
+        return self.__modelo
+    
+    def set_modelo(self, modelo):
+        self.__modelo = modelo
+    
+    # Métodos getter y setter para combustible
+    def get_combustible(self):
+        return self.__combustible
+    
+    def set_combustible(self, combustible):
+        if combustible < 0:
+            self.__combustible = 0
+        elif combustible > COMBUSTIBLE:
+            self.__combustible = COMBUSTIBLE
+        else:
+            self.__combustible = combustible
     
     def conducir(self, km=0):
         consumo = km / KM_POR_LITRO
-        if consumo > self.combustible:
+        if consumo > self.__combustible:
             print(f'No hay suficiente combustible para recorrer {km} km.')
         else:
-            self.combustible -= consumo
-            print(f'Has conducido {km} km. Combustible restante: {self.combustible} litros.')
+            self.__combustible -= consumo
+            print(f'Has conducido {km} km. Combustible restante: {self.__combustible} litros.')
     
     def repostar(self, litros=0):
         if litros <= 0:
             print('Cantidad de combustible inválida.')
             return
         
-        nuevo_nivel = self.combustible + litros
+        nuevo_nivel = self.__combustible + litros
         if nuevo_nivel > COMBUSTIBLE:
-            self.combustible = COMBUSTIBLE
+            self.__combustible = COMBUSTIBLE
             print('Tanque lleno!')
         else:
-            self.combustible = nuevo_nivel
-            print(f'Repostaste {litros} litros. Combustible actual: {self.combustible} litros.')
+            self.__combustible = nuevo_nivel
+            print(f'Repostaste {litros} litros. Combustible actual: {self.__combustible} litros.')
     
     def estado(self):
-        print(f'Combustible restante: {self.combustible} litros.')
-        
+        print(f'Combustible restante: {self.__combustible} litros.')
+
 # Instancia de la clase Coche
 mi_coche = Coche('Toyota', 'Corolla')
 
@@ -71,4 +84,3 @@ def menu():
         print('\nFin de la operación. Enter para volver al menú principal')
 
 menu()
-
