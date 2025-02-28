@@ -5,25 +5,25 @@ KM_POR_LITRO = 10
 # Definimos la clase Coche
 class Coche:
     def __init__(self, marca='', modelo=''):
-        self.__marca = marca  # Atributo privado
-        self.__modelo = modelo  # Atributo privado
-        self.__combustible = COMBUSTIBLE  # Atributo privado
+        self.__marca = marca  
+        self.__modelo = modelo  
+        self.__combustible = COMBUSTIBLE  
     
-    # Métodos getter y setter para marca
+    
     def get_marca(self):
         return self.__marca
     
     def set_marca(self, marca):
         self.__marca = marca
     
-    # Métodos getter y setter para modelo
+    
     def get_modelo(self):
         return self.__modelo
     
     def set_modelo(self, modelo):
         self.__modelo = modelo
     
-    # Métodos getter y setter para combustible
+
     def get_combustible(self):
         return self.__combustible
     
@@ -59,7 +59,7 @@ class Coche:
     def estado(self):
         print(f'Combustible restante: {self.__combustible} litros.')
 
-# Instancia de la clase Coche
+
 mi_coche = Coche('Toyota', 'Corolla')
 
 def menu():
