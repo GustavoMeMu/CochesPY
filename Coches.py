@@ -81,6 +81,6 @@ def menu():
             print('Opción no válida')
         
         print(''.center(50, '-'))
-        print('\nFin de la operación. Enter para volver al menú principal')
+        print('\nFin de la operación.')
 
 menu()
